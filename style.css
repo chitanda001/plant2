@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@300;400;500&display=swap');
+
+:root {
+    
+    --bg-color: #fcfcfc;       
+    --main-green: #4a5d43;    
+    --accent-gold: #b18f6a;    
+    --text-dark: #2c2c2c;
+    --text-grey: #666;
+    --border: #e0e0e0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    line-height: 1.7;
+}
+
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+img { width: 100%; display: block; }
+ul { list-style: none; }
+
+/* --- 導覽列 --- */
+nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 5%; background: #fff; border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 100;
+}
+.brand { font-family: 'Noto Serif TC', serif; font-size: 1.5rem; letter-spacing: 2px; color: var(--main-green); font-weight: 600; }
+.nav-menu a { margin-left: 20px; font-size: 0.9rem; color: var(--text-grey); }
+.nav-menu a:hover { color: var(--main-green); }
+
+/* --- 通用容器 --- */
+.container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+
+/* --- 首頁 Hero --- */
+.hero {
+    
+    height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+    
+     background: 
+        linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), /* 這一層是遮罩 */
+        url('image/background.jpg') no-repeat center center/cover; /* 這一層是圖片 */
+        
+    position: relative;
+}
+.hero h1 { font-family: 'Noto Serif TC', serif; font-size: 3.5rem; color: var(--main-green); margin-bottom: 20px; }
+.hero p { color: var(--text-grey); max-width: 600px; margin-bottom: 40px; }
+.btn {
+    
+    padding: 12px 40px; background: var(--main-green); color: #fff;
+    border-radius: 4px; letter-spacing: 1px;
+}
+.btn:hover { background: #364431; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+/* --- 商店頁：篩選問答 --- */
+/* 隱藏 Radio Buttons */
+input[type="radio"] { display: none; }
+
+/* 步驟切換動畫 */
+.step { display: none; animation: fadeIn 0.6s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.question-box { text-align: center; max-width: 900px; margin: 0 auto; }
+.q-title { font-family: 'Noto Serif TC', serif; font-size: 2rem; margin-bottom: 40px; }
+.options { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+
+.opt-card {
+    background: #fff; width: 300px; padding: 40px 20px;
+    border: 1px solid var(--border); border-radius: 8px; cursor: pointer; transition: 0.3s;
+}
+.opt-card:hover { border-color: var(--main-green); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+.opt-icon { font-size: 3rem; display: block; margin-bottom: 20px; }
+.opt-label { font-size: 1.2rem; font-weight: 500; display: block; margin-bottom: 10px; color: var(--main-green); }
+.opt-desc { font-size: 0.9rem; color: var(--text-grey); }
+
+/* --- 商店頁：商品網格 --- */
+.result-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 40px; }
+
+/* 預設隱藏所有商品，靠 CSS 篩選顯示 */
+.product { display: none; background: #fff; border-radius: 8px; overflow: hidden; transition: 0.3s; border: 1px solid transparent; }
+.product:hover { border-color: var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.05); transform: translateY(-5px); }
+.p-img { height: 320px; object-fit: cover; background: #eee; }
+.p-info { padding: 20px; text-align: center; }
+.p-name { font-size: 1.1rem; margin-bottom: 5px; font-weight: 500; }
+.p-price { color: var(--accent-gold); font-family: 'Noto Serif TC', serif; font-weight: bold; }
+
+/* --- 篩選邏輯 (CSS Magic) --- */
+#step-1 { display: block; } /* 初始顯示 Q1 */
+input[name="light"]:checked ~ #step-1 { display: none; }
+input[name="light"]:checked ~ #step-2 { display: block; }
+input[name="pet"]:checked ~ #step-2 { display: none; }
+input[name="pet"]:checked ~ #results { display: block; }
+
+/* 配對顯示邏輯 */
+/* 低光 + 寵物 */
+#light-low:checked ~ #pet-yes:checked ~ #results .grid .product.low.safe { display: block; }
+#light-low:checked ~ #pet-yes:checked ~ #results .status::after { content: "篩選：低光照 + 寵物友善"; }
+/* 低光 + 無寵物 */
+#light-low:checked ~ #pet-no:checked ~ #results .grid .product.low { display: block; }
+#light-low:checked ~ #pet-no:checked ~ #results .status::after { content: "篩選：低光照環境"; }
+/* 高光 + 寵物 */
+#light-high:checked ~ #pet-yes:checked ~ #results .grid .product.high.safe { display: block; }
+#light-high:checked ~ #pet-yes:checked ~ #results .status::after { content: "篩選：充足光照 + 寵物友善"; }
+/* 高光 + 無寵物 */
+#light-high:checked ~ #pet-no:checked ~ #results .grid .product.high { display: block; }
+#light-high:checked ~ #pet-no:checked ~ #results .status::after { content: "篩選：充足光照環境"; }
+
+/* --- 詳細介紹頁 (Product Detail) --- */
+.detail-layout { display: flex; gap: 60px; margin-top: 40px; align-items: flex-start; }
+.d-img-col { flex: 1; }
+.d-img-col img { border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.d-info-col { flex: 1; padding-top: 20px; }
+.d-title { font-family: 'Noto Serif TC', serif; font-size: 3rem; margin-bottom: 5px; color: var(--main-green); }
+.d-sci { font-style: italic; color: var(--text-grey); margin-bottom: 20px; display: block; }
+.d-price { font-size: 1.5rem; color: var(--accent-gold); font-weight: bold; margin-bottom: 30px; display: block; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
+.d-desc { margin-bottom: 30px; text-align: justify; }
+.care-box { background: #f8f9f8; padding: 25px; border-radius: 8px; margin-bottom: 30px; }
+.care-box h4 { margin-bottom: 15px; color: var(--main-green); }
+.care-box li { margin-bottom: 8px; padding-left: 20px; position: relative; }
+.care-box li::before { content: "•"; color: var(--main-green); position: absolute; left: 0; }
+.buy-btn {
+    display: block; width: 100%; text-align: center; padding: 15px;
+    background: var(--main-green); color: white; border-radius: 4px; font-weight: 500;
+}
+.buy-btn:hover { background: #364431; }
+
+/* --- 結帳頁 (Checkout) --- */
+.checkout-box { text-align: center; max-width: 600px; margin: 100px auto; padding: 60px; background: #fff; border: 1px solid var(--border); border-radius: 8px; }
+.check-icon { font-size: 4rem; color: var(--main-green); margin-bottom: 20px; display: block; }
+
+/* RWD */
+@media (max-width: 768px) {
+    .detail-layout { flex-direction: column; }
+    .hero h1 { font-size: 2.5rem; }
+}
+

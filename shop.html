@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能選購 | Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="brand">BOTANICAL</div>
+        <div class="nav-menu">
+            <a href="index.html">回首頁</a>
+            <a href="shop.html">重新篩選</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <input type="radio" name="light" id="light-low">
+        <input type="radio" name="light" id="light-high">
+        <input type="radio" name="pet" id="pet-yes">
+        <input type="radio" name="pet" id="pet-no">
+
+        <div id="step-1" class="step question-box">
+            <h2 class="q-title">01. 您的種植環境光照如何？</h2>
+            <div class="options">
+                <label for="light-low" class="opt-card">
+                    <span class="opt-icon">☁️</span>
+                    <span class="opt-label">採光受限</span>
+                    <span class="opt-desc">浴室、臥室、只有日光燈或散射光。</span>
+                </label>
+                <label for="light-high" class="opt-card">
+                    <span class="opt-icon">☀️</span>
+                    <span class="opt-label">光線充足</span>
+                    <span class="opt-desc">有明亮的落地窗、陽台，有直射陽光。</span>
+                </label>
+            </div>
+        </div>
+
+        <div id="step-2" class="step question-box">
+            <h2 class="q-title">02. 家中是否有毛小孩？</h2>
+            <div class="options">
+                <label for="pet-yes" class="opt-card">
+                    <span class="opt-icon">🐈</span>
+                    <span class="opt-label">有，需要無毒</span>
+                    <span class="opt-desc">貓狗可能會啃咬植物，需確保 100% 安全。</span>
+                </label>
+                <label for="pet-no" class="opt-card">
+                    <span class="opt-icon">✨</span>
+                    <span class="opt-label">沒有，不需擔心</span>
+                    <span class="opt-desc">沒有寵物，所有種類植物皆可。</span>
+                </label>
+            </div>
+        </div>
+
+        <div id="results" class="step">
+            <div class="result-header">
+                <h3>為您推薦：<span class="status"></span></h3>
+                <a href="shop.html" style="color:var(--text-grey); font-size:0.9rem;">清除重選</a>
+            </div>
+
+            <div class="grid">
+                <a href="snake-plant.html" class="product low high toxic">
+                    <img src="image/Snake+Plant.jpg" class="p-img" alt="虎尾蘭">
+                    <div class="p-info">
+                        <h4 class="p-name">虎尾蘭</h4>
+                        <span class="p-price">NT$ 350</span>
+                    </div>
+                </a>
+
+                <a href="pothos.html" class="product low toxic">
+                    <img src="image/pothos.jpg" class="p-img" alt="黃金葛">
+                    <div class="p-info">
+                        <h4 class="p-name">黃金葛</h4>
+                        <span class="p-price">NT$ 150</span>
+                    </div>
+                </a>
+
+                <a href="staghorn.html" class="product low high safe">
+                    <img src="image/Staghorn.jpg" class="p-img" alt="鹿角蕨">
+                    <div class="p-info">
+                        <h4 class="p-name">鹿角蕨</h4>
+                        <span class="p-price">NT$ 890</span>
+                    </div>
+                </a>
+
+                <a href="monstera.html" class="product low high toxic">
+                    <img src="image/Monstera.webp" class="p-img" alt="龜背芋">
+                    <div class="p-info">
+                        <h4 class="p-name">龜背芋</h4>
+                        <span class="p-price">NT$ 580</span>
+                    </div>
+                </a>
+
+                <a href="spider.html" class="product low safe">
+                    <img src="image/diaolan.jpg" class="p-img" alt="吊蘭">
+                    <div class="p-info">
+                        <h4 class="p-name">吊蘭</h4>
+                        <span class="p-price">NT$ 200</span>
+                    </div>
+                </a>
+
+                <a href="fiddle.html" class="product high toxic">
+                    <img src="image/Fiddle.webp" class="p-img" alt="琴葉榕">
+                    <div class="p-info">
+                        <h4 class="p-name">琴葉榕</h4>
+                        <span class="p-price">NT$ 1,200</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
