@@ -12,7 +12,7 @@
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="quiz.html">Quiz</a>
-            <a href="cart.html" class="cart-icon">🛒 <span class="cart-count">0</span></a>
+            <a href="cart.html" class="cart-icon">🛒 <span class="cart-count">2</span></a>
         </div>
     </nav>
 
@@ -21,13 +21,39 @@
 
         <div class="cart-layout">
             <div class="cart-items">
+                
+                <div class="cart-item">
+                    <div class="item-img">
+                        <img src="image/Snake+Plant.jpg" alt="虎尾蘭">
+                    </div>
+                    <div class="item-info">
+                        <h3>虎尾蘭 (Sansevieria)</h3>
+                        <p class="item-desc">盆器：水泥灰 / 尺寸：M</p>
+                        <div class="item-price">NT$ 450</div>
+                    </div>
+                    <a href="#" class="remove-btn">×</a>
                 </div>
+
+                <div class="cart-item">
+                    <div class="item-img">
+                        <img src="image/Monstera.webp" alt="龜背芋">
+                    </div>
+                    <div class="item-info">
+                        <h3>龜背芋 (Monstera)</h3>
+                        <p class="item-desc">盆器：陶土白 / 尺寸：L</p>
+                        <div class="item-price">NT$ 880</div>
+                    </div>
+                    <a href="#" class="remove-btn">×</a>
+                </div>
+
+            </div>
 
             <div class="cart-summary">
                 <h3>訂單摘要</h3>
                 <div class="summary-row">
                     <span>小計</span>
-                    <span id="subtotal">NT$ 0</span> </div>
+                    <span>NT$ 1,330</span>
+                </div>
                 <div class="summary-row">
                     <span>運費</span>
                     <span>NT$ 100</span>
@@ -35,16 +61,15 @@
                 <div class="summary-divider"></div>
                 <div class="summary-total">
                     <span>總計</span>
-                    <span id="final-total">NT$ 0</span> </div>
+                    <span>NT$ 1,430</span>
+                </div>
 
                 <div class="cart-actions">
                     <a href="quiz.html" class="btn-outline">← 繼續逛逛</a>
-                    <button onclick="checkout()" class="btn-checkout" style="width:100%; border:none; cursor:pointer; font-size:1rem;">前往付款</button>
+                    <a href="#" class="btn-checkout">前往付款</a>
                 </div>
             </div>
         </div>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
