@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購物清單 | Cart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">BOTANICAL</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="cart.html" class="cart-icon">🛒 <span class="cart-count">0</span></a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="cart-title">您的選購清單</h2>
+
+        <div class="cart-layout">
+            <div class="cart-items">
+                </div>
+
+            <div class="cart-summary">
+                <h3>訂單摘要</h3>
+                <div class="summary-row">
+                    <span>小計</span>
+                    <span id="subtotal">NT$ 0</span> </div>
+                <div class="summary-row">
+                    <span>運費</span>
+                    <span>NT$ 100</span>
+                </div>
+                <div class="summary-divider"></div>
+                <div class="summary-total">
+                    <span>總計</span>
+                    <span id="final-total">NT$ 0</span> </div>
+
+                <div class="cart-actions">
+                    <a href="quiz.html" class="btn-outline">← 繼續逛逛</a>
+                    <button onclick="checkout()" class="btn-checkout" style="width:100%; border:none; cursor:pointer; font-size:1rem;">前往付款</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
